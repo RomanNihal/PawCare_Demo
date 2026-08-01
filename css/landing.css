@@ -362,6 +362,14 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
 }
 
 .pricing-card.popular {
@@ -512,15 +520,20 @@ section {
 }
 
 .faq-answer {
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
-  display: none;
+  transition: max-height var(--transition-normal), padding var(--transition-normal), opacity var(--transition-normal);
+  opacity: 0;
 }
 
 .faq-item.active .faq-answer {
-  display: block;
+  max-height: 250px;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  opacity: 1;
 }
 
 .faq-item.active .faq-question span {
@@ -766,7 +779,7 @@ footer {
 }
 
 /* Responsive Layout Rules */
-@media(max-width: 900px) {
+@media (max-width: 900px) {
   /* Navigation */
   header {
     padding: 1rem 5%;
@@ -998,13 +1011,28 @@ footer {
 }
 
 @media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 6rem;
+    gap: 1rem;
+  }
+  
+  .hero-content {
+    margin: 0 auto;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+
   .about-section {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .hero-content h1 {
     font-size: 2.35rem;
     letter-spacing: -0.5px;

@@ -580,11 +580,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+  padding-right: 0.5rem;
 }
 
 .conv-name {
   font-weight: 600;
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .conv-excerpt {
@@ -593,7 +599,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;
+  max-width: 100%;
 }
 
 .conv-chat-area {
@@ -884,7 +890,7 @@ body {
 }
 
 /* Responsive Admin Dashboard Styles */
-@media(max-width: 900px) {
+@media (max-width: 900px) {
   .admin-mobile-nav {
     display: flex;
   }
@@ -911,6 +917,11 @@ body {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+  
+  .glass-panel {
+    min-width: 0;
+    max-width: 100%;
+  }
 
   .section-header {
     flex-direction: column;
@@ -928,6 +939,9 @@ body {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   
   /* Conversational Chat Tabs spacing */
@@ -935,6 +949,7 @@ body {
     grid-template-columns: 1fr;
     height: auto;
     min-height: 500px;
+    position: relative;
   }
   
   .conv-list {
@@ -942,7 +957,7 @@ body {
   }
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .login-card {
     width: 100%;
     margin: 1.5rem;
