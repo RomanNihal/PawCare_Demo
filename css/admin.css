@@ -847,3 +847,110 @@ body {
   padding-top: 0.5rem;
   margin-top: 3rem;
 }
+
+/* Mobile top nav bar (hidden by default on desktop) */
+.admin-mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 999;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+
+.mobile-sidebar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.admin-mobile-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Responsive Admin Dashboard Styles */
+@media(max-width: 900px) {
+  .admin-mobile-nav {
+    display: flex;
+  }
+  
+  .sidebar {
+    left: -280px;
+    transition: left var(--transition-normal);
+    box-shadow: var(--shadow-xl);
+    height: 100vh;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 1.5rem;
+    padding-top: 5.5rem; /* Space for fixed mobile top bar */
+    width: 100%;
+  }
+  
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .section-header .btn {
+    width: 100%;
+  }
+
+  /* Scrollable tables to prevent horizontal overflow */
+  .data-table-container {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Conversational Chat Tabs spacing */
+  .conversations-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .conv-list {
+    max-height: 250px;
+  }
+}
+
+@media(max-width: 600px) {
+  .login-card {
+    width: 100%;
+    margin: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .calendar-day {
+    padding: 0.25rem;
+    font-size: 0.75rem;
+  }
+}

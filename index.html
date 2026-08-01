@@ -27,12 +27,16 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li class="nav-menu-portal-link"><a href="admin.html" style="color: var(--primary);">Doctor Portal</a></li>
     </ul>
-    <div>
-      <a href="admin.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.25rem;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="admin.html" class="btn btn-secondary doctor-portal-btn" style="padding: 0.5rem 1.25rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.25rem;">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
         <span>Doctor Portal</span>
       </a>
+      <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Toggle Navigation" style="display: none;">
+        <svg class="icon" viewBox="0 0 24 24"><line class="line-top" x1="3" y1="6" x2="21" y2="6"></line><line class="line-mid" x1="3" y1="12" x2="21" y2="12"></line><line class="line-bot" x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </header>
 
@@ -666,6 +670,23 @@
         }
       });
     });
+
+    // Mobile Navigation Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+      });
+      // Close mobile menu on clicking any navigation links
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.classList.remove('active');
+        });
+      });
+    }
   </script>
 
 </body>

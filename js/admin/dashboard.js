@@ -63,13 +63,33 @@ function bootstrapDashboard() {
 // Sidebar Navigation Management
 function setupNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
+  const sidebar = document.querySelector('.sidebar');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const tabName = link.getAttribute('data-tab');
       switchTab(tabName);
+      if (sidebar) {
+        sidebar.classList.remove('active');
+      }
     });
   });
+
+  // Mobile sidebar toggle handler
+  const sidebarToggle = document.getElementById('admin-sidebar-toggle');
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside of it
+    document.addEventListener('click', (e) => {
+      if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== sidebarToggle) {
+        sidebar.classList.remove('active');
+      }
+    });
+  }
 }
 
 // Tab Switching Orchestrator
